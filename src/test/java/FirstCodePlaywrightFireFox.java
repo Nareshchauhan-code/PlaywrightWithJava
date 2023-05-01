@@ -1,15 +1,16 @@
-import com.microsoft.playwright.*;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
 import org.testng.annotations.Test;
 
-import java.awt.*;
-
-public class FirstCodePlaywright {
+public class FirstCodePlaywrightFireFox {
 
     @Test
     void launchBrowser() {
 
         Playwright playwright = Playwright.create();
-        Browser browser = playwright.chromium().launch();
+        Browser browser = playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
         Page page = browser.newPage();
         page.navigate("https://google.com");
         String title = page.title();
